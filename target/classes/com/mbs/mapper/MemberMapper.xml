@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DOCTTYPE은 서로간의 전달하는 목표의 주제를 전달하기 위한 코드 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.mbs.mapper.MemberMapper">
+  
+  <!-- 회원가입 -->
+  	<insert id="join">
+		Insert into tbl_test values(#{userId}, #{userPass}, #{userName}, #{userPnum})
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="com.mbs.dto.MemberDto">
+		Select USERID, USERPASS
+		From tbl_test
+		where USERID = #{userId}
+		AND USERPASS = #{userPass}
+	</select>
+	
+	<!-- 회원정보수정 -->
+	<update id="memberUpdate">
+		Update tbl_test SET
+		USERPASS = #{userPass},
+		USERNAME = #{userName},
+		USERPNUM = #{userPnum}
+		Where USERID = #{userId}
+	</update>
+	
+  </mapper>
